@@ -1,0 +1,16 @@
+<h1>Hello</h1>
+
+<pre>Hello World!</pre>
+
+<% @array.each do |n| %>
+  <%= n %>
+<% end %>
+
+
+ID: <%= params[:id] %>
+Page: <%= @page.to_i + 1 %>
+
+<%= link_to('Index', {:action => 'index'}) %>
+
+<hr>
+<%= params.inspect %>

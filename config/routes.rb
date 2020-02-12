@@ -1,8 +1,37 @@
 Rails.application.routes.draw do
-  root 'demo#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root "public#index"
+
+  resources :subjects do
+    member do
+      get :delete
+    end
+    resources :pages do
+      member do
+        get :delete
+      end
+      resources :sections do
+        member do
+          get :delete
+        end
+      end
+    end
+  end
+
+
+
+
+
+  resources :admin_users, except: [:show] do
+    member do
+    get :delete
+    end
+  end
+
+  get "show/:permalink", to: "public#show"
+  get "admin", to: "access#index"
 
   # catch all, default route match
-  match ':controller(/:action(/:id(.:format)))', :via => :get
-
+  match ":controller(/:action(/:id(.:format)))", via: [:get, :post]
 end
+

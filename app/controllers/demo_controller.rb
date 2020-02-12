@@ -16,4 +16,7 @@ class DemoController < ApplicationController
   def google
     redirect_to("www.google.com")
   end
+
+  def text_helpers
+  end
 end
